@@ -1,28 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:roll_dice/styled_text.dart';
+import 'package:roll_dice/dice_roller.dart';
 
+// import 'package:roll_dice/styled_text.dart';
+// import 'package:roll_dice/styled_text.dart';
+
+const startAlignment = Alignment.topLeft;
+const endAlignment = Alignment.bottomRight;
+
+//COLORS AS ARGUMENTS
 class GradientContainer extends StatelessWidget {
-  const GradientContainer({key})
-      : super(key: key); // or you can just ({super.key})
-  // initialization work
-  //add some comment text;
+  const GradientContainer(this.color1, this.color2, {super.key});
+
+  const GradientContainer.purple({super.key})
+      : color1 = Colors.deepPurple,
+        color2 = Colors.orangeAccent;
+
+  final Color color1;
+  final Color color2;
 
   @override
   Widget build(context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            Colors.deepPurple,
-            Colors.purpleAccent,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          colors: [color1, color2],
+          begin: startAlignment,
+          end: endAlignment,
         ),
       ),
-      child: const Center(
-        child: StyledText(),
+      child: Center(
+        // child: StyledText('My first app'),
+        child: DiceRoller(),
       ),
     );
   }
 }
+
+
+
+//LIST COLORS
+// class GradientContainer extends StatelessWidget {
+//   const GradientContainer(this.colors,
+//       {super.key}); // or you can just ({super.key})
+  // initialization work
+  //add some comment text;
+
+  // final List<Color> colors;
+  // @override
+  // Widget build(context) {
+  //   return Container(
+  //     decoration: BoxDecoration(
+  //       gradient: LinearGradient(
+  //         colors: colors,
+  //         begin: startAlignment,
+  //         end: endAlignment,
+  //       ),
+  //     ),
+  //     child: const Center(
+  //       child: StyledText('MyFirstApp'),
+  //     ),
+  //   );
+  // }
+// }
